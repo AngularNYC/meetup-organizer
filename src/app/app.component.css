@@ -1,0 +1,12 @@
+.col{
+    display:inline-block;
+    vertical-align: top;
+}
+
+.col:first-of-type {
+    border-right: 1px solid silver;
+}
+
+.col:last-of-type{
+    margin-left: 100px;
+}
