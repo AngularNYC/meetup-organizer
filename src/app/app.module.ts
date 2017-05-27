@@ -11,6 +11,9 @@ import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {TaskComponent} from './task/task.component';
+import {RouterModule, Routes} from '@angular/router';
+import {TemplatesComponent} from './templates/templates.component';
+import {PublishComponent} from './publish/publish.component';
 
 
 const firebaseConfig = {
@@ -21,18 +24,36 @@ const firebaseConfig = {
 };
 
 
+const routes: Routes = [
+  {
+    path: '',
+    component: TemplatesComponent
+  },
+  {
+    path: 'templates',
+    component: TemplatesComponent
+  },
+  {
+    path: 'publish',
+    component: PublishComponent
+  }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
     CreateGroupComponent,
     CreateTaskComponent,
     GroupComponent,
-    TaskComponent
+    TaskComponent,
+    TemplatesComponent,
+    PublishComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   providers: [AngularFireDatabase, AngularFireAuth],

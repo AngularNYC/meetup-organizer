@@ -9,24 +9,16 @@ import {AngularFireDatabase} from 'angularfire2/database';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  groups = this.firebaseDb.list('/groups');
-  groupFormOpen = false;
   groupsDropdown;
   date;
   eventTitle;
-  repo = 'aziz512/my-second-project';
+  repo = 'angularNYC/meetup';
 
-  constructor(private http: Http, private firebaseDb: AngularFireDatabase) {
+  constructor(private http: Http) {
   }
 
-  addGroup() {
-    this.groupFormOpen = !this.groupFormOpen;
-  }
 
-  groupAdded(group) {
-    this.groupFormOpen = false;
-    this.groups.push(group);
-  }
+/*
 
   publish() {
     this.groups.subscribe(groups => {
@@ -51,4 +43,5 @@ export class AppComponent {
     };
     return this.http.post(`https://api.github.com/repos/${this.repo}/issues`, issueData, options);
   }
+  */
 }

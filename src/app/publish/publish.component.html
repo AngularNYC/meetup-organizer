@@ -1,0 +1,8 @@
+<h1>Publish an event</h1>
+<div class="line"><label>Groups: </label><select multiple [(ngModel)]="groupsDropdown">
+  <option *ngFor="let group of groups | async" [value]="group.label">{{group.name}}</option>
+</select></div>
+<div class="line"><label>Date: </label><input type="text" [(ngModel)]="date"></div>
+<div class="line"><label>Title (optional): </label><input type="text" [(ngModel)]="eventTitle"></div>
+<button (click)="publish()">Publish</button>
+

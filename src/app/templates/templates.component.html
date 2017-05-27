@@ -1,0 +1,9 @@
+<div class="col">
+  <div>
+    <button (click)="addGroup()">Add group</button>
+  </div>
+  <app-create-group *ngIf="groupFormOpen" (groupCreated)="groupAdded($event)"></app-create-group>
+  <div *ngFor="let group of groups | async">
+    <app-group [group]="group"></app-group>
+  </div>
+</div>

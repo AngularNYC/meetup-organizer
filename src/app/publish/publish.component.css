@@ -1,0 +1,10 @@
+label {
+  width: 220px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.line {
+  padding-bottom: 10px;
+}
+
