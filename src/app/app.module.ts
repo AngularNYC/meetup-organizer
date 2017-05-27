@@ -54,6 +54,10 @@ const routes: Routes = [
   {
     path: 'events',
     component: EventsComponent
+  },
+  {
+    path: 'events/:id',
+    component: EventsComponent
   }
 ];
 

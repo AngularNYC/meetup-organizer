@@ -15,20 +15,4 @@
     </md-input-container>
   </div>
   <button md-raised-button color="primary" (click)="publish()">Publish</button>
-
-
-  <div *ngIf="issuesCreated.length">
-    <h2>{{issuesCreated.length}} issues submitted</h2>
-    <a [href]="labelUrl(issuesCreatedDate)">see all issues</a>
-
-    <div *ngFor="let issue of issuesCreated">
-      <h3>{{issue.title}}</h3>
-      <div>{{issue.body}}</div>
-      <div>
-        <md-chip-list>
-          <md-chip *ngFor="let label of issue.labels">{{label.name}}</md-chip>
-        </md-chip-list>
-      </div>
-    </div>
-  </div>
 </md-card>

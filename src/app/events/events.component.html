@@ -1,5 +1,20 @@
-<md-list-item *ngFor="let event of events | async">
-  <h4 md-line></h4>
-  <p md-line> {{event.date}} {{event.name ? '['+event.name+']' : ''}}</p>
-</md-list-item>
+<div>
+  <md-list-item *ngFor="let event of events | async; let i = index">
+    <a [routerLink]="['/','events', event.$key]" md-line> {{event.date}} {{event.name ? '['+event.name+']' : ''}}</a>
+  </md-list-item>
+</div>
+<div>
+  <div *ngIf="currentEvent | async as event">
+    <h2>{{event.issues.length}} issues submitted</h2>
 
+    <md-card *ngFor="let issue of event.issues">
+      <md-card-title><a [href]="issue.html_url" target="_blank">{{issue.title}}</a></md-card-title>
+      <md-card-content>{{issue.body}}</md-card-content>
+      <md-card-actions>
+        <md-chip-list>
+          <md-chip *ngFor="let label of issue.labels">{{label.name}}</md-chip>
+        </md-chip-list>
+      </md-card-actions>
+    </md-card>
+  </div>
+</div>
