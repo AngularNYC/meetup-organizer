@@ -11,7 +11,7 @@
   </div>
   <div>
     <md-input-container hintLabel="Meetup title (optional)">
-      <input mdInput type="text" [(ngModel)]="eventTitle" title="Meetup title">
+      <input mdInput type="text" [(ngModel)]="name" title="Meetup title">
     </md-input-container>
   </div>
   <button md-raised-button color="primary" (click)="publish()">Publish</button>
@@ -28,8 +28,6 @@
         <md-chip-list>
           <md-chip *ngFor="let label of issue.labels">{{label.name}}</md-chip>
         </md-chip-list>
-
-
       </div>
     </div>
   </div>

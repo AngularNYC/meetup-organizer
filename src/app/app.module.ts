@@ -24,6 +24,7 @@ import {
   MdToolbarModule
 } from '@angular/material';
 import {EventsComponent} from './events/events.component';
+import {EventsService} from './events.service';
 
 declare const require;
 require('style-loader!../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css');
@@ -82,7 +83,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [AngularFireDatabase, AngularFireAuth],
+  providers: [AngularFireDatabase, AngularFireAuth, EventsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,3 +1,5 @@
-<p>
-  events works!
-</p>
+<md-list-item *ngFor="let event of events | async">
+  <h4 md-line></h4>
+  <p md-line> {{event.date}} {{event.name ? '['+event.name+']' : ''}}</p>
+</md-list-item>
+

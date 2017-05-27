@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AngularFireDatabase} from 'angularfire2/database';
 
 @Component({
   selector: 'app-events',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
+  events = this.firebaseDb.list('/events');
 
-  constructor() { }
+  constructor(private firebaseDb: AngularFireDatabase) {
+  }
 
   ngOnInit() {
   }
