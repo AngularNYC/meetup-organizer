@@ -46,7 +46,6 @@ export class PublishComponent implements OnInit {
 
       combineLatest(groupRequests).subscribe((result) => {
         this.issuesCreated = [].concat.apply([], result);
-
       });
     });
   }
