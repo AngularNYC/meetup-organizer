@@ -1,6 +1,6 @@
 <md-card>
-  <div class="col">
 
+  <div class="aside">
     <app-create-group *ngIf="groupFormOpen" (groupCreated)="groupAdded($event)"></app-create-group>
     <div *ngFor="let group of groups | async">
       <app-group [group]="group"></app-group>
@@ -9,10 +9,32 @@
       <button (click)="addGroup()">Add group</button>
     </div>
   </div>
-  OHOHO
-  <div *ngIf="currentGroup | async as group">
-    ee
-    {{group | json}}
+
+  <div *ngIf="currentTemplate | async as template" class="main">
+    <div *ngIf="isEditMode | async">
+      <div>
+        <md-input-container hintLabel="Name">
+          <input mdInput value="{{template.name}}">
+        </md-input-container>
+      </div>
+      <div>
+        <md-input-container hintlabel="Issue body">
+          <textarea mdInput name="description" id="" cols="30" rows="10" >{{template.description}}</textarea>
+        </md-input-container>
+      </div>
+
+
+      <button md-raised-button>Save</button>
+      <button md-button routerLink="." [queryParams]="{}">Cancel</button>
+    </div>
+    <div *ngIf="!(isEditMode | async)">
+      <h1>{{template.name}}</h1>
+      <a routerLink="." [queryParams]="{edit: 'true'}">Edit</a>
+      <div Markdown>
+        {{template.description}}
+      </div>
+
+    </div>
   </div>
 
 </md-card>

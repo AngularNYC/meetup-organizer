@@ -25,9 +25,11 @@ import {
 } from '@angular/material';
 import {EventsComponent} from './events/events.component';
 import {EventsService} from './events.service';
+import {MarkdownModule} from 'angular2-markdown';
 
 declare const require;
 require('style-loader!../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css');
+require('style-loader!../../node_modules/prismjs/themes/prism-okaidia.css');
 
 
 const firebaseConfig = {
@@ -77,6 +79,7 @@ const routes: Routes = [
     EventsComponent
   ],
   imports: [
+    MarkdownModule.forRoot(),
     MdCardModule,
     MdChipsModule,
     MdButtonModule,

@@ -24,6 +24,7 @@
     "@angular/router": "^4.0.0",
     "@ngrx/core": "^1.2.0",
     "@ngrx/store": "^2.2.2",
+    "angular2-markdown": "^1.6.0",
     "angularfire2": "^4.0.0-rc.0",
     "core-js": "^2.4.1",
     "firebase": "^4.0.0",
