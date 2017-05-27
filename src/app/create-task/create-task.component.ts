@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
-import { AppComponent } from "../app.component";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-create-task',
@@ -7,8 +7,8 @@ import { AppComponent } from "../app.component";
   styleUrls: ['./create-task.component.css']
 })
 export class CreateTaskComponent implements OnInit {
-  name:string;
-  description:string;
+  name: string;
+  description: string;
   @Input()
   group;
   @Output()
@@ -16,16 +16,17 @@ export class CreateTaskComponent implements OnInit {
   @Output()
   cancel = new EventEmitter();
 
-  constructor(private app:AppComponent) { }
-  
+  constructor(private app: AppComponent) {
+  }
+
 
   ngOnInit() {
   }
 
-  add(){
+  add() {
     this.taskAdded.next({
-        name:this.name,
-        description:this.description
+      name: this.name,
+      description: this.description
     });
   }
 }

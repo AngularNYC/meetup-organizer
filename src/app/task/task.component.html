@@ -1,4 +1,6 @@
-<input type="text" [(ngModel)]="task.name" [readonly]="!isNameEditing" (dblclick)="isNameEditing = !isNameEditing" (input)="inputChange.next()">
+<input type="text" [(ngModel)]="task.name" [readonly]="!isNameEditing" (dblclick)="isNameEditing = !isNameEditing"
+       (input)="inputChange.next()">
 <div>
-  <textarea [(ngModel)]="task.description" [readonly]="!isDescEditing" (dblclick)="isDescEditing = !isDescEditing" (input)="inputChange.next()"></textarea>
+  <textarea [(ngModel)]="task.description" [readonly]="!isDescEditing" (dblclick)="isDescEditing = !isDescEditing"
+            (input)="inputChange.next()"></textarea>
 </div>

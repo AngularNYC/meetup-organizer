@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { CreateTaskComponent } from '../create-task/create-task.component';
-import { AngularFireDatabase } from "angularfire2/database";
-import { AngularFireAuth } from "angularfire2/auth";
+import {Component, Input, OnInit} from '@angular/core';
+import {AngularFireDatabase} from 'angularfire2/database';
+import {AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase';
 
 @Component({
@@ -14,30 +13,33 @@ export class GroupComponent implements OnInit {
   group;
   tasks;
   isAddTask = false;
-  constructor(private firebaseDb: AngularFireDatabase, private firebaseAuth: AngularFireAuth) {}
+
+  constructor(private firebaseDb: AngularFireDatabase, private firebaseAuth: AngularFireAuth) {
+  }
 
   ngOnInit() {
     this.tasks = this.firebaseDb.list(`/groups/${this.group.$key}/tasks`);
-    
-    if(!localStorage['github-access-token']){
-      var provider = new firebase.auth.GithubAuthProvider();
+
+    if (!localStorage['github-access-token']) {
+      const provider = new firebase.auth.GithubAuthProvider();
       provider.addScope('repo');
       this.firebaseAuth.auth.signInWithPopup(provider).then(authData => {
         localStorage['github-access-token'] = authData.credential.accessToken;
       });
     }
   }
-  toggleTaskForm(){
+
+  toggleTaskForm() {
     this.isAddTask = !this.isAddTask;
   }
 
-  addTask(task){
+  addTask(task) {
     const tasks = this.firebaseDb.list('/groups/' + this.group.$key + '/tasks');
     tasks.push(task);
     this.isAddTask = false;
   }
 
-  tasksToArray(tasksObject){
+  tasksToArray(tasksObject) {
     return tasksObject ? Object.keys(tasksObject).map(key => tasksObject[key]) : [];
   }
 }

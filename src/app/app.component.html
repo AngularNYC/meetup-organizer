@@ -1,15 +1,17 @@
 <div class="col">
-    <div>
-        <button (click)="addGroup()">Add group</button>
-    </div>
-    <app-create-group *ngIf="groupFormOpen" (groupCreated)="groupAdded($event)"></app-create-group>
-    <div *ngFor="let group of groups | async">
-        <app-group [group]="group"></app-group>
-    </div>
+  <div>
+    <button (click)="addGroup()">Add group</button>
+  </div>
+  <app-create-group *ngIf="groupFormOpen" (groupCreated)="groupAdded($event)"></app-create-group>
+  <div *ngFor="let group of groups | async">
+    <app-group [group]="group"></app-group>
+  </div>
 </div>
 <div class="col">
-    <div>Groups: <select multiple [(ngModel)]="groupsDropdown"><option *ngFor="let group of groups | async" [value]="group.label">{{group.name}}</option></select></div>
-    <div>Date: <input type="text" [(ngModel)]="date"></div>
-    <div>Title (optional): <input type="text" [(ngModel)]="eventTitle"></div>
-    <button (click)="publish()">Publish</button>
+  <div>Groups: <select multiple [(ngModel)]="groupsDropdown">
+    <option *ngFor="let group of groups | async" [value]="group.label">{{group.name}}</option>
+  </select></div>
+  <div>Date: <input type="text" [(ngModel)]="date"></div>
+  <div>Title (optional): <input type="text" [(ngModel)]="eventTitle"></div>
+  <button (click)="publish()">Publish</button>
 </div>

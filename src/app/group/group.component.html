@@ -1,7 +1,10 @@
-<h3>{{group.name}} <button (click)="toggleTaskForm(group)">Add task</button></h3>
+<h3>{{group.name}}
+  <button (click)="toggleTaskForm(group)">Add task</button>
+</h3>
 <div>
   <div *ngFor="let task of tasks | async">
     <app-task [task]="task" [group]="group"></app-task>
   </div>
-  <app-create-task *ngIf="isAddTask" [group]="group" (cancel)="toggleTaskForm()" (taskAdded)="addTask($event)"></app-create-task>
+  <app-create-task *ngIf="isAddTask" [group]="group" (cancel)="toggleTaskForm()"
+                   (taskAdded)="addTask($event)"></app-create-task>
 </div>

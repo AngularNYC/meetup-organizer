@@ -1,5 +1,4 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
-import { AppComponent } from "../app.component";
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-create-group',
@@ -7,24 +6,25 @@ import { AppComponent } from "../app.component";
   styleUrls: ['./create-group.component.css']
 })
 export class CreateGroupComponent implements OnInit {
-  name:string = '';
-  label:string = '';
+  name = '';
+  label = '';
 
   @Output()
   groupCreated = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit() {
-    
+  constructor() {
   }
 
-  create(){
-    if(this.name && this.label){
+  ngOnInit() {
+
+  }
+
+  create() {
+    if (this.name && this.label) {
       this.groupCreated.next({
-        name:this.name,
-        label:this.label,
-        tasks:[]
+        name: this.name,
+        label: this.label,
+        tasks: []
       });
     }
   }

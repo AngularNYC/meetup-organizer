@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
-import { AngularFireDatabase } from 'angularfire2/database';
+import {Component} from '@angular/core';
+import {Headers, Http, RequestOptions} from '@angular/http';
+import {AngularFireDatabase} from 'angularfire2/database';
 
 
 @Component({
@@ -15,7 +15,9 @@ export class AppComponent {
   date;
   eventTitle;
   repo = 'aziz512/my-second-project';
-  constructor(private http: Http, private firebaseDb: AngularFireDatabase) { }
+
+  constructor(private http: Http, private firebaseDb: AngularFireDatabase) {
+  }
 
   addGroup() {
     this.groupFormOpen = !this.groupFormOpen;
@@ -31,21 +33,21 @@ export class AppComponent {
       groups.forEach(group => {
         if (this.groupsDropdown.includes(group.label)) {
           Object.keys(group.tasks).forEach(key => {
-            let task = group.tasks[key];
+            const task = group.tasks[key];
             this.createIssue(task.name, task.description, group.label, localStorage['github-access-token']).subscribe();
           });
         }
-      })
+      });
     });
   }
 
   createIssue(name, text, label, accessToken) {
-    const headers = new Headers({ 'Authorization': 'token ' + accessToken });
-    const options = new RequestOptions({ headers: headers });
-    let issueData = {
+    const headers = new Headers({'Authorization': 'token ' + accessToken});
+    const options = new RequestOptions({headers: headers});
+    const issueData = {
       title: `[${this.date}] [${this.eventTitle}] ${name}`,
       body: text,
-      labels:[label]
+      labels: [label]
     };
     return this.http.post(`https://api.github.com/repos/${this.repo}/issues`, issueData, options);
   }

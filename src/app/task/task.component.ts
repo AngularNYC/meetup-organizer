@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, EventEmitter } from '@angular/core';
-import { AngularFireDatabase } from "angularfire2/database";
+import {Component, EventEmitter, Input, OnInit} from '@angular/core';
+import {AngularFireDatabase} from 'angularfire2/database';
 import 'rxjs/add/operator/debounceTime';
 
 
@@ -16,7 +16,9 @@ export class TaskComponent implements OnInit {
   isNameEditing = false;
   isDescEditing = false;
   inputChange = new EventEmitter();
-  constructor(private firebaseDb: AngularFireDatabase) { }
+
+  constructor(private firebaseDb: AngularFireDatabase) {
+  }
 
   ngOnInit() {
     this.inputChange.debounceTime(500).subscribe(() => {
