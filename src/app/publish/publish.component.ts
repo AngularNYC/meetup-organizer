@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Headers, Http, RequestOptions} from '@angular/http';
-import {combineLatest} from 'rxjs/observable/combineLatest';
 import 'rxjs/add/operator/map';
+import {combineLatest} from 'rxjs/observable/combineLatest';
 
 interface GithubIssue {
   body: string;
@@ -17,13 +17,20 @@ interface GithubIssue {
 export class PublishComponent implements OnInit {
   repo = 'angularNYC/meetup';
   groups = this.firebaseDb.list('/groups');
-  groupsDropdown: Array<String> = [];
-  date: string;
+  selectedGroups: Array<String> = [];
+  date: string = PublishComponent.today();
   eventTitle: string;
   issuesCreatedDate = '';
   issuesCreated: Array<GithubIssue> = [];
 
+  static today() {
+    return new Date().toJSON().slice(0, 10);
+  }
+
   constructor(private firebaseDb: AngularFireDatabase, private http: Http) {
+    this.groups.subscribe((groups) => {
+      this.selectedGroups = groups.map(g => g.label);
+    });
   }
 
 
@@ -34,8 +41,9 @@ export class PublishComponent implements OnInit {
   publish() {
     this.issuesCreatedDate = this.date;
 
+
     this.groups.subscribe(groups => {
-      const groupRequests = groups.filter(group => this.groupsDropdown.includes(group.label))
+      const groupRequests = groups.filter(group => this.selectedGroups.includes(group.label))
         .map(group => {
           return combineLatest(Object.keys(group.tasks).map(key => {
             const task = group.tasks[key];

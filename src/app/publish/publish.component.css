@@ -18,3 +18,10 @@ label {
   width: 16px;
   height: 16px;
 }
+
+md-input-container.mat-input-container,
+md-select.mat-select {
+  max-width: 500px;
+  width: 100%;
+  margin-bottom: 25px;
+}

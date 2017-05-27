@@ -1,21 +1,33 @@
-<h1>Publish an event</h1>
-<div class="line"><label>Groups: </label><select multiple [(ngModel)]="groupsDropdown">
-  <option *ngFor="let group of groups | async" [value]="group.label">{{group.name}}</option>
-</select></div>
-<div class="line"><label>Date: </label><input type="text" [(ngModel)]="date"></div>
-<div class="line"><label>Title (optional): </label><input type="text" [(ngModel)]="eventTitle"></div>
-<button (click)="publish()">Publish</button>
+<md-card>
+  <div>
+    <md-select [(ngModel)]="selectedGroups" placeholder="Select Groups to publish" multiple="true">
+      <md-option *ngFor="let group of groups | async" [value]="group.label">{{group.name}}</md-option>
+    </md-select>
+  </div>
+  <div>
+    <md-input-container hintLabel="Meetup date">
+      <input mdInput type="date" [(ngModel)]="date" title="meetup date">
+    </md-input-container>
+  </div>
+  <div>
+    <md-input-container hintLabel="Meetup title (optional)">
+      <input mdInput type="text" [(ngModel)]="eventTitle"  title="Meetup title">
+    </md-input-container>
+  </div>
+  <button md-raised-button color="primary" (click)="publish()">Publish</button>
 
-<div *ngIf="issuesCreated.length">
-  <h2>{{issuesCreated.length}} issues submitted</h2>
-  <a [href]="labelUrl(issuesCreatedDate)">see all issues</a>
 
-  <div *ngFor="let issue of issuesCreated">
-    <h3>{{issue.title}}</h3>
-    <div>{{issue.body}}</div>
-    <div>
+  <div *ngIf="issuesCreated.length">
+    <h2>{{issuesCreated.length}} issues submitted</h2>
+    <a [href]="labelUrl(issuesCreatedDate)">see all issues</a>
+
+    <div *ngFor="let issue of issuesCreated">
+      <h3>{{issue.title}}</h3>
+      <div>{{issue.body}}</div>
+      <div>
       <span class="label" *ngFor="let label of issue.labels">
         {{label.name}}</span>
+      </div>
     </div>
   </div>
-</div>
+</md-card>
