@@ -2,8 +2,20 @@
   Angular NYC meetup Open Source
 </md-toolbar>
 
-<div class="menu">
-  <a routerLink="templates">Templates</a>
-  <a routerLink="publish">Publish an event</a>
-</div>
+<nav md-tab-nav-bar>
+  <a md-tab-link
+     [routerLink]="'templates'"
+     routerLinkActive #rlaTemplate="routerLinkActive"
+     [active]="rlaTemplate.isActive">
+    Templates
+  </a>
+  <a md-tab-link
+     [routerLink]="'publish'"
+     routerLinkActive #rlaPublish="routerLinkActive"
+     [active]="rlaPublish.isActive">
+    Publish
+  </a>
+</nav>
+
+
 <router-outlet></router-outlet>

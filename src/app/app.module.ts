@@ -14,7 +14,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {TemplatesComponent} from './templates/templates.component';
 import {PublishComponent} from './publish/publish.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdToolbarModule} from '@angular/material';
+import {MdTabsModule, MdToolbarModule} from '@angular/material';
 
 declare const require;
 require('style-loader!../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css');
@@ -54,6 +54,7 @@ const routes: Routes = [
     PublishComponent
   ],
   imports: [
+    MdTabsModule,
     MdToolbarModule,
     BrowserAnimationsModule,
     BrowserModule,
