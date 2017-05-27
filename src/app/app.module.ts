@@ -16,7 +16,7 @@ import {PublishComponent} from './publish/publish.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MdButtonModule,
-  MdCardModule,
+  MdCardModule, MdChipsModule,
   MdInputModule,
   MdSelectModule,
   MdTabsModule,
@@ -62,6 +62,7 @@ const routes: Routes = [
   ],
   imports: [
     MdCardModule,
+    MdChipsModule,
     MdButtonModule,
     MdTabsModule,
     MdInputModule,
