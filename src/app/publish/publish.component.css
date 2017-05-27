@@ -8,3 +8,13 @@ label {
   padding-bottom: 10px;
 }
 
+.label {
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.color {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
