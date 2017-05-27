@@ -1,0 +1,7 @@
+input{
+    font-weight: bold;
+}
+
+input, textarea{
+    border: 0;
+}
