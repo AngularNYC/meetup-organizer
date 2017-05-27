@@ -9,10 +9,9 @@ import 'rxjs/add/operator/debounceTime';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-  @Input()
-  task
-  @Input()
-  group
+  @Input() task;
+  @Input() group;
+
   isNameEditing = false;
   isDescEditing = false;
   inputChange = new EventEmitter();
@@ -21,7 +20,7 @@ export class TaskComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.inputChange.debounceTime(500).subscribe(() => {
+    this.inputChange.debounceTime(1000).subscribe(() => {
       if (this.task.name && this.task.description) {
         this.firebaseDb.object(`/groups/${this.group.$key}/tasks/${this.task.$key}`).set({
           name: this.task.name,

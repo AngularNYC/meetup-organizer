@@ -48,6 +48,10 @@ const routes: Routes = [
     component: TemplatesComponent
   },
   {
+    path: 'templates/:id',
+    component: TemplatesComponent
+  },
+  {
     path: 'publish',
     component: PublishComponent
   },
