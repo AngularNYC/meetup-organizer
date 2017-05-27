@@ -16,12 +16,14 @@ import {PublishComponent} from './publish/publish.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MdButtonModule,
-  MdCardModule, MdChipsModule,
+  MdCardModule,
+  MdChipsModule,
   MdInputModule,
   MdSelectModule,
   MdTabsModule,
   MdToolbarModule
 } from '@angular/material';
+import {EventsComponent} from './events/events.component';
 
 declare const require;
 require('style-loader!../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css');
@@ -47,6 +49,10 @@ const routes: Routes = [
   {
     path: 'publish',
     component: PublishComponent
+  },
+  {
+    path: 'events',
+    component: EventsComponent
   }
 ];
 
@@ -58,7 +64,8 @@ const routes: Routes = [
     GroupComponent,
     TaskComponent,
     TemplatesComponent,
-    PublishComponent
+    PublishComponent,
+    EventsComponent
   ],
   imports: [
     MdCardModule,

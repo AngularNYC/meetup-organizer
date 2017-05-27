@@ -1,22 +1,28 @@
-<md-toolbar   color="primary">
+<md-toolbar color="primary">
   Angular NYC meetup Open Source
 </md-toolbar>
 
 <nav md-tab-nav-bar>
   <a md-tab-link
-     [routerLink]="'templates'"
+     routerLink="templates"
      routerLinkActive #rlaTemplate="routerLinkActive"
      [active]="rlaTemplate.isActive">
     Templates
   </a>
   <a md-tab-link
-     [routerLink]="'publish'"
+     routerLink="publish"
      routerLinkActive #rlaPublish="routerLinkActive"
      [active]="rlaPublish.isActive">
     Publish
   </a>
+  <a md-tab-link
+     routerLink="events"
+     routerLinkActive #rlaEvents="routerLinkActive"
+     [active]="rlaEvents.isActive">
+    Events
+  </a>
 </nav>
 
 <div class="app-content">
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>
